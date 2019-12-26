@@ -28,7 +28,67 @@ public class Modules{
         return conf;
     } 
     public static void mossaComputer(char[][] conf){ 
-        //Blocco tripletta avversaria e crea tripletta propria 
+        //   VINCI maremma cane
+        for (int i = 0; i<3; i++){ //controllo righe
+            if (conf[i][0]==conf[i][1] && conf[i][0]=='X'){
+                if (conf[i][2]==' '){
+                    conf[i][2]='X';
+                    return;
+                }
+            }
+            else if (conf[i][0]==conf[i][2] && conf[i][0]=='X'){
+                if (conf[i][1]==' '){
+                    conf[i][1]='X';
+                    return;
+                }
+            }
+            else if (conf[i][1]==conf[i][2] && conf[i][1]=='X'){
+                if (conf[i][0]==' '){
+                    conf[i][0]='X';
+                    return;
+                }
+            }
+        }
+        for (int i = 0; i<3; i++){ //controllo colonne
+            if (conf[0][i]==conf[1][i] && conf[0][i]=='X'){
+                if (conf[2][i]==' '){
+                    conf[2][i]='X';
+                    return;
+                }
+            }
+            else if (conf[0][i]==conf[2][i] && conf[0][i]=='X'){
+                if (conf[1][i]==' '){
+                    conf[1][i]='X';
+                    return;
+                }
+            }
+            else if (conf[1][i]==conf[2][i] && conf[1][i]=='X'){
+                if (conf[0][i]==' '){
+                    conf[0][i]='X';
+                    return;
+                }
+            }
+        }
+        //controllo le diagonali
+        if (conf[1][1]=='X'){
+            if (conf[0][0]=='X' && conf[2][2]==' '){
+                conf[2][2]='X';
+                return;
+            }
+            if (conf[2][2]=='X' && conf[0][0]==' '){
+                conf[0][0]='X';
+                return;
+            }
+            if (conf[0][2]=='X' && conf[2][0]==' '){
+                conf[2][0]='X';
+                return;
+            }
+            if (conf[2][0]=='X' && conf[0][2]==' '){
+                conf[0][2]='X';
+                return;
+            }
+        }
+        //Blocco tripletta avversaria
         for (int i = 0; i<3; i++){ //controllo righe
             if (conf[i][0]==conf[i][1] && conf[i][0]!=' '){
                 if (conf[i][2]==' '){
@@ -88,6 +148,7 @@ public class Modules{
                 return;
             }
         }
+
         //due coppie caselle adiacenti occupate (qualsiasi segno X o O paralleli o perpendicolari)
 
         for (int i=0; i<3; i++){
@@ -175,82 +236,6 @@ public class Modules{
                 }
             }
 
-                    
-                    
-                    
-                       
-
-        
-        
-        //controllo i 4 angoli
-        
-        
-        
-        
-        /*if (conf[0][1]!=' '){
-            if (conf[1][0]!=' ' && conf[0][0]==' '){
-                conf[0][0]='X';
-                return;
-            }
-            else if (conf[1][2]!=' ' && conf[0][2]==' '){
-                    conf[0][2]='X';
-                    return;
-            }
-        }
-        if (conf[2][1]!=' '){
-            if (conf[1][0]=='X' && conf[2][0]==' '){
-                conf[2][0]='X';
-                return;
-            }
-            else if (conf[1][2]!=' ' && conf[2][2]==' '){
-                    conf[2][2]='X';
-                    return;
-            }
-        //controllo il centrale 
-        if (conf[0][0]!=' '){
-            if (conf[1][0]!=' ' && conf[0][0]==' '){
-                conf[0][0]='X';
-                return;
-            }
-            else if (conf[1][2]!=' ' && conf[0][2]==' '){
-                    conf[0][2]='X';
-                    return;
-            }
-        }
-        if (conf[2][1]!=' '){
-            if (conf[1][0]=='X' && conf[2][0]==' '){
-                conf[2][0]='X';
-                return;
-            }
-            else if (conf[1][2]!=' ' && conf[2][2]==' '){
-                    conf[2][2]='X';
-                    return;
-            }
-        
-        
-        
-        
-        
-        /*if (conf[0][1]=='X'){
-            if (conf[1][0]=='X' && conf[0][0]==' '){
-                conf[0][0]='X';
-                return;
-            }
-            else if (conf[1][2]=='X' && conf[0][2]==' '){
-                    conf[0][2]='X';
-                    return;
-            }
-        }
-        if (conf[2][1]=='X'){
-            if (conf[1][0]=='X' && conf[2][0]==' '){
-                conf[2][0]='X';
-                return;
-            }
-            else if (conf[1][2]=='X' && conf[2][2]==' '){
-                    conf[2][2]='X';
-                    return;
-            }
-        }*/
         //occupo la centrale
         if (conf[1][1]==' '){
             conf[1][1]='X';
