@@ -88,10 +88,150 @@ public class Modules{
                 return;
             }
         }
-        //due coppie caselle adiacenti (non in linea perche' gia' fatto nel punto 1)
-        //e non col centro che faro' nel punto sucessivo, 
-        //quindi soltanto controlli negli angoli
-        if (conf[0][1]=='X'){
+        //due coppie caselle adiacenti occupate (qualsiasi segno X o O paralleli o perpendicolari)
+
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                if (conf[i][j]!=' '){//una casella piena
+                    if(j<2){//se sono nelle prime due colonne
+                        if (conf[i][j+1]!=' '){//controllo la colonna successiva se è piena
+                            if (i<2){//se sono nelle prime due righe
+                                if (conf[i+1][j]==' '){//controllo le due caselle sotto, se sono vuote
+                                    conf[i+1][j]='X';//segno su quella vuota
+                                    return;
+                                }
+                                else if (conf[i+1][j+1]==' '){
+                                    conf[i+1][j+1]='X';
+                                    return;
+                                }   
+                            }
+                            if(i>0){//se sono nelle ultime due righe
+                                if (conf[i-1][j]==' '){//controllo le due caselle sopra, se sono vuote
+                                    conf[i-1][j]='X';//segno su quella vuota
+                                    return;
+                                }
+                                else if (conf[i-1][j+1]==' '){
+                                    conf[i-1][j+1]='X';
+                                    return;
+                                }    
+                            }
+                        
+                        }
+                    }
+                    if(i<2){//se sono nelle prime due righe
+                        if (conf[i+1][j]!=' '){//controllo la riga successiva se è piena
+                            if (j<2){//se sono nelle prime due colonne
+                                if (conf[i][j+1]==' '){//controllo le due caselle a destra, se sono vuote
+                                    conf[i][j+1]='X';//segno su quella vuota
+                                    return;
+                                }
+                                else if (conf[i+1][j+1]==' '){
+                                    conf[i+1][j+1]='X';
+                                    return;
+                                }   
+                            }
+                            if(j>0){//se sono nelle ultime due colonne
+                                if (conf[i][j-1]==' '){//controllo le due caselle a sinistra, se sono vuote
+                                    conf[i][j-1]='X';//segno su quella vuota
+                                    return;
+                                }
+                                else if (conf[i+1][j-1]==' '){
+                                    conf[i+1][j-1]='X';
+                                    return;
+                                }    
+                            }
+                        
+                        }
+                    }
+                }
+
+            }
+        }
+        //due coppie sulla diagonale
+            if (conf[1][1]!=' '){ //se il centro è occupato
+                for (int i=0; i<3; i++){
+                    for (int j=0; j<3; j++){
+                        if (i==0){//se sono sulla prima riga
+                            if(j==0){//se sono sulla prima colonna
+                                if (conf[i][j]!=' '){//se la casella non  vuota
+                                    if (conf[i+1][j]==' '){//riempi quella sotto
+                                        conf[i+1][j]='X';
+                                        return;
+                                    }
+                                    else if(conf[i][j+1]==' '){//o quella a destra
+                                        conf[i][j+1]='X';
+                                        return;
+                                    }
+                                }
+                            }
+                            if(j==1){//seconda colonna
+                                
+
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+                    
+                    
+                    
+                       
+
+        
+        
+        //controllo i 4 angoli
+        
+        
+        
+        
+        /*if (conf[0][1]!=' '){
+            if (conf[1][0]!=' ' && conf[0][0]==' '){
+                conf[0][0]='X';
+                return;
+            }
+            else if (conf[1][2]!=' ' && conf[0][2]==' '){
+                    conf[0][2]='X';
+                    return;
+            }
+        }
+        if (conf[2][1]!=' '){
+            if (conf[1][0]=='X' && conf[2][0]==' '){
+                conf[2][0]='X';
+                return;
+            }
+            else if (conf[1][2]!=' ' && conf[2][2]==' '){
+                    conf[2][2]='X';
+                    return;
+            }
+        //controllo il centrale 
+        if (conf[0][0]!=' '){
+            if (conf[1][0]!=' ' && conf[0][0]==' '){
+                conf[0][0]='X';
+                return;
+            }
+            else if (conf[1][2]!=' ' && conf[0][2]==' '){
+                    conf[0][2]='X';
+                    return;
+            }
+        }
+        if (conf[2][1]!=' '){
+            if (conf[1][0]=='X' && conf[2][0]==' '){
+                conf[2][0]='X';
+                return;
+            }
+            else if (conf[1][2]!=' ' && conf[2][2]==' '){
+                    conf[2][2]='X';
+                    return;
+            }
+        
+        
+        
+        
+        
+        /*if (conf[0][1]=='X'){
             if (conf[1][0]=='X' && conf[0][0]==' '){
                 conf[0][0]='X';
                 return;
@@ -110,7 +250,7 @@ public class Modules{
                     conf[2][2]='X';
                     return;
             }
-        }
+        }*/
         //occupo la centrale
         if (conf[1][1]==' '){
             conf[1][1]='X';
